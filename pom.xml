@@ -11,6 +11,8 @@
         <module>Lmd_ServerUser</module>
         <module>Lmd_ServerUserPoint</module>
         <module>Lmd_Account</module>
+        <module>Lmd_ServerLogin</module>
+        <module>Lmd_LoginApi</module>
     </modules>
 
     <parent>

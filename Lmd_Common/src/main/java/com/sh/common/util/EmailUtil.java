@@ -1,10 +1,8 @@
 package com.sh.common.util;
 
 
-
-
-import com.qfedu.common.config.ProjectConfig;
-import com.qfedu.common.model.EmailMsg;
+import com.sh.common.config.ProjectConfig;
+import com.sh.common.model.EmailMsg;
 
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
