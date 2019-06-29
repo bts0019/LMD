@@ -35,7 +35,31 @@ public class ProjectConfig {
 
     //有效期4个小时 5分钟， 备份永久有效
 
+    //激活地址
+    public static final String ACTIVEURL="";
+    public static final String AESKEYACTIVECODE="Sr766D1d0ir+q61J2ho7rQ==";
 
+   /* //密码加密 采用RSA
+    public static final String PASSRSAPUB="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIPcObwNMNMsOpJB6XUt7/MyQ0croXAQ7pBxqnnY5yTmHf48Yz+0o9310xPTm3n6NvKB66QKAtsc18ULrkgznSkCAwEAAQ==";
+    public static final String PASSRSAPRI="MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAg9w5vA0w0yw6kkHpdS3v8zJDRyuhcBDukHGqedjnJOYd/jxjP7Sj3fXTE9Obefo28oHrpAoC2xzXxQuuSDOdKQIDAQABAkAl64xS7zwuTpbdfsUDpN1PhBHjAsIfd08UDQwolF8MthIuXtVc3epw7au+x1RUMcsY+Ve4O/6erU2XVw40uOCxAiEA0XsiqRf+BPFoqPje3TqdXfRuSj9hjRTYrKDTkRz7nvUCIQChJGYwmoADQCrQXpXIUavGXBQ+73Cprgj/PvEfFkk85QIhALHA9gFcTX1uR+wR+jLpeP1v22J/c8yeYtnhQoWBfXY9AiB8/jHyE3Wmj9hl5mhCiO84HuZpZus6As/hxV3dIjlO7QIgYEYa9iYf4c6xT/++OxrD9/aH+v3VSnyDccHSrms1/f8=";
+
+    //JWT的签名算法
+    public static final String JWTSIGN="SHA256";
+    public static final int JWTTIME=30;//令牌的有效期
+    public static final String JWTKEY="qfjava_ljb";
+*/
+    //资源文件的前缀
+    public static final String RESOURCEURL="http://localhost:9804/ljbresource/";
+
+
+    //OSS配置
+    // Endpoint以杭州为例，其它Region请按实际情况填写。
+
+    public static final String endpoint = "http://oss-cn-beijing.aliyuncs.com";
+    // 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。
+    public static final String accessKeyId = "LTAIhTvqTSmlmjeQ";
+    public static final String accessKeySecret = "X7X9w0Ck5GEIWgP9tl0Q6sgmFjQuMv";
+    public static final String bucketName = "java1901";
 
     public static Map<Integer,String> projects;
     static {
