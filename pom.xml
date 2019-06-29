@@ -9,6 +9,7 @@
         <module>Lmd_Common</module>
         <module>Lmd_Eureka</module>
         <module>Lmd_ServerUser</module>
+        <module>Lmd_ServiceUserPower</module>
         <module>Lmd_ServerUserPoint</module>
     </modules>
 
@@ -45,6 +46,8 @@
         <jwt.version>3.8.1</jwt.version>
         <jjwt.version>0.9.1</jjwt.version>
         <lombok.version>1.16.20</lombok.version>
+        <pagehelperboot.version>1.2.12</pagehelperboot.version>
+        <zxing.version>3.3.2</zxing.version>
     </properties>
 
 
@@ -151,6 +154,23 @@
                 <groupId>com.sh</groupId>
                 <artifactId>Lmd_Common</artifactId>
                 <version>${lmd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sh</groupId>
+                <artifactId>Lmd_Entity</artifactId>
+                <version>${lmd.version}</version>
+            </dependency>
+            <dependency>
+                <!--分页-->
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelperboot.version}</version>
+            </dependency>
+            <dependency>
+                <!--生成二维码-->
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${zxing.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
