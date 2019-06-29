@@ -15,14 +15,12 @@ public class TCouponController {
 
     /**
      * 查找优惠卷
-     * @param uid
-     * @param status
-     * @param page
+
      * @return
      */
     @GetMapping("coupon/getcoupon.do")
-    public R findcoupon(@RequestParam("uid")int uid, @RequestParam("status")int status,@RequestParam("page") int page){
-        return tCouponService.findCouponByuidAndstatus(uid,status,page);
+    public R findcoupon(@RequestParam("token")String token,@RequestParam("page") int page){
+        return tCouponService.findCouponByuidAndstatus(token,page);
     }
 
     /**
@@ -31,8 +29,8 @@ public class TCouponController {
      * @return
      */
     @GetMapping("coupon/getChangeCoupon.do")
-    public R exchangeCoupon(@RequestParam("password") String password,@RequestParam("uid") int uid){
-        return tCouponService.findCouponByPassword(password,uid);
+    public R exchangeCoupon(@RequestParam("password") String password,@RequestParam("token") String token){
+        return tCouponService.findCouponByPassword(password,token);
     }
 
 }
