@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.lmd.server.power.dao.TInviteMapper">
+
+     <select id="selectInviteByUid" resultType="com.sh.lmd.server.power.po.MyInvitePo">
+        SELECT i.num num,i.reward reward,count(*) cnum FROM t_invite i inner join t_coupon c
+        where c.uid = i.uid and c.getType=3 and i.uid = #{uid} group by i.num,i.reward
+    </select>
+
+    <select id="selectInviteUser" resultType="com.sh.lmd.server.power.po.MyInviteUserPo">
+        select u.userName ,u.createTime,u.status,i.reward
+        from t_invi_detail i inner join t_user u
+        where i.inviteId = #{uid} and u.userId = i.fuid
+    </select>
+
+</mapper>
