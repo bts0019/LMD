@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface InviteService {
 
     @GetMapping("invite/findMyInvite.do")
-    public R findMyInvite(@RequestParam("uid") Integer uid);
+    public R findMyInvite(@RequestParam("token")String token );
 
     @GetMapping("invite/findInviteUser.do")
-    public R findInviteUser(@RequestParam("uid") Integer uid);
+    public R findInviteUser(@RequestParam("token") String token);
 
 }

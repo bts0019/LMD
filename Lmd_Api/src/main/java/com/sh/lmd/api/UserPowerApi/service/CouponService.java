@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface CouponService {
 
     @GetMapping("coupon/getcoupon.do")
-    R findcoupon(@RequestParam("uid")int uid, @RequestParam("status")int status, @RequestParam("page") int page);
+    R findcoupon(@RequestParam("token")String token, @RequestParam("page") int page);
 
     @GetMapping("coupon/getChangeCoupon.do")
-    public R exchangeCoupon(@RequestParam("password") String password,@RequestParam("uid") int uid);
+    public R exchangeCoupon(@RequestParam("password") String password,@RequestParam("token") String token);
 }

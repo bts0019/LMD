@@ -1,7 +1,11 @@
 package com.sh.lmd.server.power.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.sh.common.config.ProjectConfig;
+import com.sh.common.util.JedisUtil;
 import com.sh.common.util.MoneyUtil;
 import com.sh.common.vo.R;
+import com.sh.lmd.entity.TUser;
 import com.sh.lmd.server.power.dao.TInviteMapper;
 import com.sh.lmd.server.power.po.MyInvitePo;
 import com.sh.lmd.server.power.po.MyInviteUserPo;
@@ -21,9 +25,13 @@ public class TInviteServiceImpl implements TInviteService {
     @Autowired
     private TInviteMapper inviteDao;
 
+    @Autowired(required = false)
+    private JedisUtil jedisUtil;
+
     @Override
-    public R findInviteByUid(Integer uid) {
-        MyInvitePo myInvite = inviteDao.selectInviteByUid(uid);
+    public R findInviteByUid(String token) {
+        TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
+        MyInvitePo myInvite = inviteDao.selectInviteByUid(user.getUserid());
         MyInvite invite = new MyInvite();
         invite.setCnum(myInvite.getCnum());
         invite.setReward(MoneyUtil.TransformMoney(myInvite.getReward()));
@@ -32,8 +40,9 @@ public class TInviteServiceImpl implements TInviteService {
     }
 
     @Override
-    public R findInviteUser(Integer uid) {
-        List<MyInviteUserPo> list = inviteDao.selectInviteUser(uid);
+    public R findInviteUser(String token) {
+        TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
+        List<MyInviteUserPo> list = inviteDao.selectInviteUser(user.getUserid());
         List<MyInviteUser> listuser = new ArrayList<>();
         Iterator<MyInviteUserPo> iter = list.iterator();
         while (iter.hasNext()){

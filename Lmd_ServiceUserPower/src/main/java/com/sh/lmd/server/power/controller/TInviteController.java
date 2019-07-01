@@ -14,13 +14,13 @@ public class TInviteController {
     private TInviteService inviteService;
 
     @GetMapping("invite/findMyInvite.do")
-    public R findMyInvite(@RequestParam("uid") Integer uid){
-        return inviteService.findInviteByUid(uid);
+    public R findMyInvite(@RequestParam("token") String token){
+        return inviteService.findInviteByUid(token);
     }
 
     @GetMapping("invite/findInviteUser.do")
-    public R findInviteUser(@RequestParam("uid") Integer uid){
-        return inviteService.findInviteUser(uid);
+    public R findInviteUser(@RequestParam("token") String token){
+        return inviteService.findInviteUser(token);
     }
 
 }

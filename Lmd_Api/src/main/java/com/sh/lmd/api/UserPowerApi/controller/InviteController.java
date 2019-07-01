@@ -1,14 +1,15 @@
 package com.sh.lmd.api.UserPowerApi.controller;
 
+import com.sh.common.config.ProjectConfig;
 import com.sh.common.util.QrCodeUtil;
 import com.sh.common.vo.R;
 import com.sh.lmd.api.UserPowerApi.service.InviteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -20,13 +21,13 @@ public class InviteController {
     private InviteService inviteService;
 
     @GetMapping("invite/findMyInvite.do")
-    public R findMyInvite(@RequestParam("uid") Integer uid){
-        return inviteService.findMyInvite(uid);
+    public R findMyInvite(HttpServletRequest request){
+        return inviteService.findMyInvite(request.getHeader(ProjectConfig.TOKENHEAD));
     }
 
     @GetMapping("invite/findInviteUser.do")
-    public R findInviteUser(@RequestParam("uid") Integer uid){
-        return inviteService.findInviteUser(uid);
+    public R findInviteUser(HttpServletRequest request){
+        return inviteService.findInviteUser(request.getHeader(ProjectConfig.TOKENHEAD));
     }
 
     @GetMapping("invite/invite.do")
