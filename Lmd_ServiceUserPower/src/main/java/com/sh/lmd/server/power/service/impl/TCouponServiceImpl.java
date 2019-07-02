@@ -29,7 +29,7 @@ public class TCouponServiceImpl implements TCouponService {
     public R findCouponByuidAndstatus(String token,int page) {
         TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
         Map<String,Integer> map = new HashMap<>();
-        map.put("uid",user.getUserid());
+        map.put("uid",user.getUserId());
         map.put("status",user.getStatus());
         PageHelper.startPage(page,6);
         PageInfo<TCoupon> pageInfo = new PageInfo<>(couponDao.selectCouponByUserAndStatus(map));
@@ -48,7 +48,7 @@ public class TCouponServiceImpl implements TCouponService {
         }else {
 
             map.put("password",password);
-            map.put("uid",user.getUserid());
+            map.put("uid",user.getUserId());
             couponDao.updateCouponByPassword(map);
             return R.setOK("优惠卷兑换成功！",null);
         }

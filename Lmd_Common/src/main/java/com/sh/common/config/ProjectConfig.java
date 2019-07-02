@@ -78,7 +78,13 @@ public class ProjectConfig {
     public static final int JWTTIME=30;//令牌的有效期
     public static final String JWTKEY="qfjava_ljb";
 
-
+    //阿里云产品
+    public static final String ALIHOST = "https://naidcard.market.alicloudapi.com"; //接口方法路径
+    public static final String IDCARDPATH="/nidCard";// 身份证访问的路径
+    public static final String ALIAPPCODES="dfdb29d8d90a4ec58002735bc4ce28ed"; //阿里云申请账户的appcodes
+    public static final String ALIAPPSECRET="u6qwjy06tmwpj382l7q2rv8y8sfvtnk2"; //阿里
+    public static final String ALIAPPKEY="203721826";//产品key值
+    public static final int ALITIMEOUT=500; //设置连接超时时间
 
 
 

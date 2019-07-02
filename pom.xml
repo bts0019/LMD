@@ -14,6 +14,7 @@
         <module>Lmd_Account</module>
         <module>Lmd_ServerLogin</module>
         <module>Lmd_LoginApi</module>
+        <module>Lmd_Message</module>
     </modules>
 
     <parent>

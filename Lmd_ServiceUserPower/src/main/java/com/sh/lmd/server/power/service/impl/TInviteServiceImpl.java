@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 public class TInviteServiceImpl implements TInviteService {
 
-    @Autowired
+    @Autowired(required = false)
     private TInviteMapper inviteDao;
 
     @Autowired(required = false)
@@ -31,7 +31,7 @@ public class TInviteServiceImpl implements TInviteService {
     @Override
     public R findInviteByUid(String token) {
         TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
-        MyInvitePo myInvite = inviteDao.selectInviteByUid(user.getUserid());
+        MyInvitePo myInvite = inviteDao.selectInviteByUid(user.getUserId());
         MyInvite invite = new MyInvite();
         invite.setCnum(myInvite.getCnum());
         invite.setReward(MoneyUtil.TransformMoney(myInvite.getReward()));
@@ -42,7 +42,7 @@ public class TInviteServiceImpl implements TInviteService {
     @Override
     public R findInviteUser(String token) {
         TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
-        List<MyInviteUserPo> list = inviteDao.selectInviteUser(user.getUserid());
+        List<MyInviteUserPo> list = inviteDao.selectInviteUser(user.getUserId());
         List<MyInviteUser> listuser = new ArrayList<>();
         Iterator<MyInviteUserPo> iter = list.iterator();
         while (iter.hasNext()){

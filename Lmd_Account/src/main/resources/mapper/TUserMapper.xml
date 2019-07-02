@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.lmd.account.dao.TUserMapper">
+
+  <resultMap id="BaseResultMap" type="com.sh.lmd.entity.TUser">
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="realName" jdbcType="VARCHAR" property="realname" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="adressId" jdbcType="INTEGER" property="adressId" />
+    <result column="vip" jdbcType="INTEGER" property="vip" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="createTime" jdbcType="DATE" property="createtime" />
+  </resultMap>
+
+  <update id="updateByUserId" parameterType="com.sh.lmd.entity.TUser">
+    update t_user
+    <set>
+      <if test="password!=null">
+        password = #{password},
+      </if>
+      <if test="realName!=null">
+        realName = #{realName},
+      </if>
+      <if test="email!=null">
+        email = #{email},
+      </if>
+      <if test="userName!=null">
+        userName = #{userName},
+      </if>
+      <if test="vip!=null">
+        vip = #{vip},
+      </if>
+      <if test="phone!=null">
+        phone = #{phone},
+      </if>
+      <if test="adressId!=null">
+        adressId = #{adressId}
+      </if>
+    </set>
+    <where>
+      userId = #{userId}
+    </where>
+  </update>
+  <update id="updateEmailByUserId" parameterType="map">
+      update t_user
+      set email =#{email}
+      where userId = #{userId}
+  </update>
+  <update id="updatePasswordByUserId" parameterType="map">
+      update t_user
+      set password =#{password}
+      where userId = #{userId}
+  </update>
+
+  <select id="selectById" parameterType="int" resultMap="BaseResultMap">
+    select * from t_user where userId = #{userId}
+  </select>
+
+
+  <insert id="insert" parameterType="com.sh.lmd.entity.TUser">
+    insert into t_user (userId, userName, phone, 
+      email, realName, img, 
+      status, idCard, adressId,
+      vip, integral, createTime
+      )
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{idcard,jdbcType=VARCHAR}, #{adressId,jdbcType=INTEGER},
+      #{vip,jdbcType=INTEGER}, #{integral,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="userId" parameterType="com.sh.lmd.entity.TUser">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="realname != null">
+        realName,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="idcard != null">
+        idCard,
+      </if>
+      <if test="adressId != null">
+        adressId,
+      </if>
+      <if test="vip != null">
+        vip,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="adressId != null">
+        #{adressId,jdbcType=INTEGER},
+      </if>
+      <if test="vip != null">
+        #{vip,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>
