@@ -18,7 +18,7 @@ public class CardCenterController {
     @Autowired
     private CardCentService cardCentService;
 
-    @GetMapping("memberinfolist.do")
+    @GetMapping("cardlist.do")
     public Cardcenter findById(@RequestParam("id")int id){
 
         return cardCentService.selectByPrimaryKey(id);
