@@ -9,36 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class JedisUtil {
-    private JedisPool pool = null;
-    private static JedisUtil jedisUtil=new JedisUtil();
-    private JedisUtil() {
-        if (pool == null) {
-            String ip = ProjectConfig.REDISHOST;
-            int port = ProjectConfig.REDISPORT;
-            String password =ProjectConfig.REDISPASS;
-            JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-            jedisPoolConfig.setMaxTotal(1000);
-            jedisPoolConfig.setMaxIdle(4000);
-            jedisPoolConfig.setMaxWaitMillis(10000);
-            if (password != null && !"".equals(password)) {
-                // redis 设置了密码
-                pool = new JedisPool(jedisPoolConfig, ip, port, 10000, password);
-            } else {
-                // redis 未设置密码
-                pool = new JedisPool(jedisPoolConfig, ip, port, 10000);
-            }
-        }
-    }
-    public static JedisUtil getInstance(){
-        return jedisUtil;
-    }
-    /**
-     * 获取Jedis对象*/
-    private Jedis getJedis() {
-        return pool.getResource();
-    }
-
 /**
  * @author dks
  * @Date created in 2019-6-18
@@ -954,9 +924,5 @@ public class JedisUtil {
             jedis.close();
         }
     }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/master
 }

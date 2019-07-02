@@ -1,5 +1,8 @@
 package com.sh.common.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProjectConfig {
     public static final String SIGNKEY="usign:lmd";//记录每天答题  Set集合 内容 手机号
 
@@ -20,7 +23,6 @@ public class ProjectConfig {
     public static final String TOKENPHONE="user:";//记录手机号对应的令牌  有效期 30分钟
     public static final String USERLOGINCOUNT="uc:";// uc:手机号  次数  10分钟
     public static final String USERSD="userfreeze:";//手机号 所有冻结的手机号
-    public static final String SIGNKEY="usign:ljb";//记录每天签到  Set集合 内容 手机号
     //
     public static final String TOKENHEAD="usertoken";
 
@@ -73,10 +75,6 @@ public class ProjectConfig {
     public static final String PASSRSAPUB="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIPcObwNMNMsOpJB6XUt7/MyQ0croXAQ7pBxqnnY5yTmHf48Yz+0o9310xPTm3n6NvKB66QKAtsc18ULrkgznSkCAwEAAQ==";
     public static final String PASSRSAPRI="MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAg9w5vA0w0yw6kkHpdS3v8zJDRyuhcBDukHGqedjnJOYd/jxjP7Sj3fXTE9Obefo28oHrpAoC2xzXxQuuSDOdKQIDAQABAkAl64xS7zwuTpbdfsUDpN1PhBHjAsIfd08UDQwolF8MthIuXtVc3epw7au+x1RUMcsY+Ve4O/6erU2XVw40uOCxAiEA0XsiqRf+BPFoqPje3TqdXfRuSj9hjRTYrKDTkRz7nvUCIQChJGYwmoADQCrQXpXIUavGXBQ+73Cprgj/PvEfFkk85QIhALHA9gFcTX1uR+wR+jLpeP1v22J/c8yeYtnhQoWBfXY9AiB8/jHyE3Wmj9hl5mhCiO84HuZpZus6As/hxV3dIjlO7QIgYEYa9iYf4c6xT/++OxrD9/aH+v3VSnyDccHSrms1/f8=";
 
-    //JWT的签名算法
-    public static final String JWTSIGN="SHA256";
-    public static final int JWTTIME=30;//令牌的有效期
-    public static final String JWTKEY="qfjava_ljb";
 
 
 
