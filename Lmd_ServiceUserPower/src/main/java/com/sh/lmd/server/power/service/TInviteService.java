@@ -6,15 +6,15 @@ public interface TInviteService {
 
     /**
      * 根据用户id查找邀请
-     * @param uid
+     * @param token
      * @return
      */
-    R findInviteByUid(Integer uid);
+    R findInviteByUid(String token);
 
     /**
      * 根据用户id查询用户的邀请用户
-     * @param uid
+     * @param token
      * @return
      */
-    R findInviteUser(Integer uid);
+    R findInviteUser(String token);
 }

@@ -45,7 +45,10 @@
             <groupId>com.sh</groupId>
             <artifactId>Lmd_Common</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.sh</groupId>
+            <artifactId>Lmd_Entity</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
