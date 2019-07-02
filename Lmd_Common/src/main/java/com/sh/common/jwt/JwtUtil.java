@@ -29,7 +29,11 @@ public class JwtUtil {
     }
     //生成秘钥
     private static SecretKey createKey(){
+<<<<<<< HEAD
         byte[] dataKey=ProjectConfig.JWTKEY.getBytes();
+=======
+      byte[] dataKey=ProjectConfig.JWTKEY.getBytes();
+>>>>>>> origin/master
         SecretKey key=new SecretKeySpec(dataKey,0,dataKey.length,"AES");
         return key;
     }
@@ -48,7 +52,11 @@ public class JwtUtil {
     public static String parseJWT(String token){
         SecretKey key=createKey();
         try{
+<<<<<<< HEAD
             Claims claims= Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+=======
+            Claims claims=Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+>>>>>>> origin/master
             return claims.getSubject();
         }catch (Exception e){
             return null;
@@ -58,7 +66,11 @@ public class JwtUtil {
     public static String updateJWT(String token){
         SecretKey key=createKey();
         try{
+<<<<<<< HEAD
             SignatureAlgorithm algorithm= SignatureAlgorithm.HS256;
+=======
+            SignatureAlgorithm algorithm=SignatureAlgorithm.HS256;
+>>>>>>> origin/master
             Claims claims=Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
             claims.setIssuedAt(new Date());
             claims.setExpiration(TimeUtil.getMinutes(ProjectConfig.JWTTIME));
@@ -70,4 +82,16 @@ public class JwtUtil {
             return null;
         }
     }
+<<<<<<< HEAD
+=======
+
+    public static void main(String[] args) {
+//        String token=createJWT("1001","{'name':'zhangsan','phone':'18515990152'}");
+//        System.out.println(token);
+//        System.out.println("解析："+parseJWT(token));
+//        String token1=updateJWT(token);
+//        System.out.println("更新之后："+token1);
+        System.out.println(checkJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1ODkxMzMxMTk1Njc2OTE3NzYiLCJzdWIiOiJ7XCJpZFwiOlwiNTg5MTMzMTE5NTY3NjkxNzc2XCIsXCJwaG9uZVwiOlwiMTg1MTU5OTAxNTRcIixcInVpZFwiOjZ9IiwiaWF0IjoxNTYwNTAxODgxLCJleHAiOjE1NjA1MDM2ODF9.iwZfw0EkaAxtuo56-SaVNZnCXZL5E9f0FFt_oXe4aws"));
+    }
+>>>>>>> origin/master
 }

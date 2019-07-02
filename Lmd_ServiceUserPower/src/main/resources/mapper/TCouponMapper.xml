@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.lmd.server.power.dao.TCouponMapper">
+  <resultMap id="BaseResultMap" type="com.sh.lmd.entity.TCoupon">
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="createTime" jdbcType="DATE" property="createtime" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
+    <result column="minMoney" jdbcType="INTEGER" property="minmoney" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="getType" jdbcType="INTEGER" property="getType" />
+  </resultMap>
+ <select id="selectCouponByUserAndStatus" parameterType="map" resultMap="BaseResultMap">
+   select * from t_coupon where uid = #{uid} and status=#{status}
+ </select>
+
+  <select id="selectCouponByPassword" resultMap="BaseResultMap">
+    select * from t_coupon where password = #{password}
+  </select>
+
+  <select id="selectInviteByUid" resultType="com.sh.lmd.server.power.vo.MyInvite">
+      SELECT i.num num,i.reward reward,count(*) cnum FROM t_invite i inner join t_coupon c
+      where c.uid = i.uid and c.getType=3 and i.uid = #{uid} group by i.num,i.reward
+  </select>
+
+  <update id="updateCouponByPassword" parameterType="map">
+    update t_coupon set uid=#{uid} where password=#{password}
+  </update>
+</mapper>

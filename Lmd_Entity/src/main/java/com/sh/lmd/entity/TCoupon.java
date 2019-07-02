@@ -20,4 +20,8 @@ public class TCoupon {
     private Integer money;
 
 
+    private String password;
+
+    private Integer getType;
+
 }
