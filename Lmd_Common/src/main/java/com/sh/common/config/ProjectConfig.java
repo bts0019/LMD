@@ -25,8 +25,8 @@ public class ProjectConfig {
     public static final String TOKENHEAD="usertoken";
 
     //短信配置
-    public static final String SMSKEY="b1f214fa53a78a06eb2c6e1a905c6abc";
-    public static final String SMSTEMPID="166397";
+    public static final String SMSKEY="003cf26332c57bac41406676bf83fe57";
+    public static final String SMSTEMPID="169180";
 
     //邮箱相关的配置
     public static final String EMAIL = "dks_hello@163.com";
