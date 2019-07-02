@@ -14,6 +14,10 @@
         <module>Lmd_Account</module>
         <module>Lmd_ServerLogin</module>
         <module>Lmd_LoginApi</module>
+        <module>Lmd_Message</module>
+        <module>Lmd_memberCenter</module>
+        <module>Lmd_Forum</module>
+
     </modules>
 
     <parent>
@@ -31,6 +35,7 @@
 
     <!--版本号声明-->
     <properties>
+
         <lmd.version>0.0.1-SNAPSHOT</lmd.version>
         <java.version>1.8</java.version>
         <eureka.version>2.1.1.RELEASE</eureka.version>
@@ -158,11 +163,16 @@
                 <artifactId>Lmd_Common</artifactId>
                 <version>${lmd.version}</version>
             </dependency>
+
+
+
+
             <dependency>
                 <groupId>com.sh</groupId>
                 <artifactId>Lmd_Entity</artifactId>
                 <version>${lmd.version}</version>
             </dependency>
+
             <dependency>
                 <!--分页-->
                 <groupId>com.github.pagehelper</groupId>
@@ -175,6 +185,9 @@
                 <artifactId>javase</artifactId>
                 <version>${zxing.version}</version>
             </dependency>
+
+
+
         </dependencies>
     </dependencyManagement>
 
