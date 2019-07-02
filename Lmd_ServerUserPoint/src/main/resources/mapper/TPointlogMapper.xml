@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.lmd.server.user.point.dao.TPointlogMapper">
+  <resultMap id="BaseResultMap" type="com.sh.lmd.entity.TPointlog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="ptype" jdbcType="VARCHAR" property="ptype" />
+    <result column="points" jdbcType="INTEGER" property="points" />
+    <result column="ptime" jdbcType="TIMESTAMP" property="ptime" />
+    <result column="way" jdbcType="INTEGER" property="way" />
+    <result column="days" jdbcType="INTEGER" property="days" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userId, ptype, points, ptime, way, days
+  </sql>
+
+
+  <select id="queryAll" parameterType="map" resultMap="BaseResultMap">
+    select * from t_pointlog where userId=#{userId} and way=#{way}
+  </select>
+
+  <insert id="savePointlog" parameterType="com.sh.lmd.entity.TPointlog">
+    insert into t_pointlog(userId, ptype, points, ptime, way, days) values(#{userId}, #{ptype}, #{points}, NOW(), #{way}, #{days})
+  </insert>
+
+  <select id="queryMonthLog" resultType="com.sh.lmd.entity.TPointlog">
+    select p.ptime, p.points from t_pointlog p where p.ptype = '人人答' and p.userId = #{userId} limit 0, 31
+  </select>
+
+
+
+
+</mapper>

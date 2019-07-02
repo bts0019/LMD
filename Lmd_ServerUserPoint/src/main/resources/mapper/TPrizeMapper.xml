@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.lmd.server.user.point.dao.TPrizeMapper">
+  <resultMap id="BaseResultMap" type="com.sh.lmd.entity.TPrize">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="ptype" jdbcType="VARCHAR" property="ptype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, ptype
+  </sql>
+
+  <select id="prize" resultType="int">
+    select ptype from t_prize where pid = #{pid}
+  </select>
+
+
+
+
+
+
+
+</mapper>

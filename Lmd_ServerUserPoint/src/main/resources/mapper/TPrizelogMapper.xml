@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.lmd.server.user.point.dao.TPrizelogMapper">
+  <resultMap id="BaseResultMap" type="com.sh.lmd.entity.TPrizelog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ptime" jdbcType="DATE" property="ptime" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ptime, pid, userId
+  </sql>
+
+  <select id="queryPrizelogByUserId" parameterType="int" resultType="com.sh.lmd.server.user.point.vo.VPrizelog">
+    select pr.ptime, pz.ptype from t_prizelog pr inner join t_prize pz
+    on pr.pid=pz.pid
+    where pr.userId=#{userId}
+  </select>
+
+  <select id="queryAllPrizelog" resultType="com.sh.lmd.server.user.point.vo.AllUserPrizelog">
+    select u.phone, pz.ptype from t_prizelog pr inner join t_user u
+    on pr.userId=u.userid
+    inner join t_prize pz
+    on pr.pid=pz.pid
+    where pr.pid not in (1)
+  </select>
+
+  <insert id="save" parameterType="com.sh.lmd.entity.TPrizelog">
+    insert into t_prizelog(ptime, pid, userId) values (NOW(), #{pid}, #{userId})
+  </insert>
+
+
+
+
+
+
+
+</mapper>
