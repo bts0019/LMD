@@ -43,6 +43,10 @@
             <artifactId>druid</artifactId>
         </dependency>
         <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.sh</groupId>
             <artifactId>Lmd_Entity</artifactId>
         </dependency>

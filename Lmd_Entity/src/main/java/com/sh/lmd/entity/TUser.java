@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Data
 public class TUser {
+
     private Integer userId;
     private String userName;
     private String password;

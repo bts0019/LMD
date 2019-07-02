@@ -11,6 +11,7 @@
         <module>Lmd_ServerUser</module>
         <module>Lmd_ServiceUserPower</module>
         <module>Lmd_ServerUserPoint</module>
+        <module>Lmd_PointsApi</module>
         <module>Lmd_Account</module>
         <module>Lmd_ServerLogin</module>
         <module>Lmd_LoginApi</module>
@@ -47,9 +48,12 @@
         <httpclient.version>4.5.9</httpclient.version>
         <mail.version>1.4.7</mail.version>
         <pagehelperboot.version>1.2.12</pagehelperboot.version>
+        <jedis.version>3.0.1</jedis.version>
         <jwt.version>3.8.1</jwt.version>
         <jjwt.version>0.9.1</jjwt.version>
         <lombok.version>1.16.20</lombok.version>
+        <entity.version>0.0.1-SNAPSHOT</entity.version>
+        <common.version>0.0.1-SNAPSHOT</common.version>
         <pagehelperboot.version>1.2.12</pagehelperboot.version>
         <zxing.version>3.3.2</zxing.version>
     </properties>
@@ -137,6 +141,12 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelperboot.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
             <dependency>
                 <groupId>com.auth0</groupId>
@@ -175,6 +185,16 @@
                 <groupId>com.google.zxing</groupId>
                 <artifactId>javase</artifactId>
                 <version>${zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sh</groupId>
+                <artifactId>Lmd_Entity</artifactId>
+                <version>${entity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sh</groupId>
+                <artifactId>Lmd_Common</artifactId>
+                <version>${common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

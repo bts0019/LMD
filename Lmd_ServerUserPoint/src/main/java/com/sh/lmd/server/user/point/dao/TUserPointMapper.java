@@ -1,8 +1,9 @@
 package com.sh.lmd.server.user.point.dao;
 
 
-import com.sh.common.vo.R;
+import com.sh.lmd.entity.TUser;
 
 public interface TUserPointMapper {
-    public R queryPointById(int userId);
+    TUser queryPointById(int userId);
+
 }
