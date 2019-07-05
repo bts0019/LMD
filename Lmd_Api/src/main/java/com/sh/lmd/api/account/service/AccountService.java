@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author dks
  * @date 2019/7/2 14:09
  */
-@FeignClient(value = "AccountProvider")
+@FeignClient(name = "AccountProvider")
 public interface AccountService {
 
     @RequestMapping("account/bindEmail.do")
-    public  R bindEmail(@RequestParam("email") String email, @RequestParam("token") String token);
+    public  R bindEmail1(@RequestParam(value = "email") String email, @RequestParam(value = "token") String token);
 
     @RequestMapping("account/updatePhone.do")
     public  R updatePhone(@RequestParam("phone") String phone, @RequestParam("token") String token);

@@ -3,18 +3,18 @@
 <mapper namespace="com.sh.lmd.account.dao.TUserMapper">
 
   <resultMap id="BaseResultMap" type="com.sh.lmd.entity.TUser">
-    <result column="userId" jdbcType="INTEGER" property="userid" />
-    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="realName" jdbcType="VARCHAR" property="realname" />
+    <result column="realName" jdbcType="VARCHAR" property="realName" />
     <result column="img" jdbcType="VARCHAR" property="img" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="idCard" jdbcType="VARCHAR" property="idCard" />
     <result column="adressId" jdbcType="INTEGER" property="adressId" />
     <result column="vip" jdbcType="INTEGER" property="vip" />
     <result column="integral" jdbcType="INTEGER" property="integral" />
-    <result column="createTime" jdbcType="DATE" property="createtime" />
+    <result column="createTime" jdbcType="DATE" property="createTime" />
   </resultMap>
 
   <update id="updateByUserId" parameterType="com.sh.lmd.entity.TUser">

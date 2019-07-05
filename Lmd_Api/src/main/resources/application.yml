@@ -8,7 +8,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
 server:
-  port: 9801
+  port: 9807
 
 #开启Feign的压缩 GZIP  提高效率
 feign:

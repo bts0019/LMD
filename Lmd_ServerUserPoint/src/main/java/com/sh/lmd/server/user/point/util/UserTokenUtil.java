@@ -30,7 +30,7 @@ public class UserTokenUtil {
     public static int parseUid(String json){
         if(json!=null){
             TUser user= JSON.parseObject(json,TUser.class);
-            return user.getUserid();
+            return user.getUserId();
         }else {
             return 0;
         }

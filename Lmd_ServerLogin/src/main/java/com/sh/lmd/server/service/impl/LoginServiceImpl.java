@@ -15,6 +15,7 @@ import com.sh.lmd.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Hashtable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -56,10 +57,6 @@ public class LoginServiceImpl  implements LoginService{
                     jedisUtil.setex(ProjectConfig.TOKENJWT+token,1800,JSON.toJSONString(user));
                     logDao.save(user.getUserId(),"登陆成功，令牌生成");
                     r= R.setOK("OK",token);
-
-
-
-
                 }else {
                     logDao.save(user.getUserId(),"登录失败，密码有误");
                     r= R.setERROR("密码不正确");

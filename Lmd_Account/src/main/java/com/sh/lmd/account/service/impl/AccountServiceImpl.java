@@ -77,14 +77,15 @@ public class AccountServiceImpl implements AccountService {
     public R bindEmail(String email, String token) {
 
         //判断用户是否登录
-        LoginToken user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),LoginToken.class);
+        TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
         if(null != user){
             //判断是否拥有邮箱
-            TUser tUser = tUserMapper.selectById(user.getUid());
+
+            TUser tUser = tUserMapper.selectById(user.getUserId());
             //修改邮箱
-            email = EncryptionUtil.AESDec(ProjectConfig.PASSRSAPRI, email);
+            /*email = EncryptionUtil.AESDec(ProjectConfig.PASSRSAPRI, email);*/
             if(tUser.getEmail() != null){
-                tUserMapper.updateEmailByUserId(user.getUid(), email);
+                tUserMapper.updateEmailByUserId(user.getUserId(), email);
                 return R.setOK("邮箱绑定成功", null);
             }
         }else{
@@ -97,13 +98,13 @@ public class AccountServiceImpl implements AccountService {
     public R updatePwd(String password, String token) {
 
         //获取用户信息
-        LoginToken user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),LoginToken.class);
+        TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
 
         if(null!=user){
             //对密码 进行加密
             String pwd = EncryptionUtil.AESEnc(ProjectConfig.PASSRSAPRI, password);
-            tUserMapper.updatePasswordByUserId(user.getUid(), pwd);
-            R.setOK("密码修改成功", null);
+            tUserMapper.updatePasswordByUserId(user.getUserId(), pwd);
+            return R.setOK("密码修改成功", null);
         }
 
         return R.setERROR("密码修改失败");
@@ -113,17 +114,17 @@ public class AccountServiceImpl implements AccountService {
     public R updatePhone(String phone, String token) {
 
         //获取用户的信息
-        LoginToken user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),LoginToken.class);
+        TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
 
         if(user !=null){
             //修改手机号码
             TUser tUser = new TUser();
-            tUser.setUserId(user.getUid());
+            tUser.setUserId(user.getUserId());
             tUser.setPhone(phone);
             tUserMapper.updateByUserId(tUser);
-            R.setOK("OK", null);
+            return R.setOK("OK", null);
         }
-
+        
         return R.setERROR("手机号码修改失败");
     }
 
@@ -131,7 +132,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public R addAdress(TAdress tAdress, String token) {
 
-        LoginToken user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),LoginToken.class);
+        TUser user = JSON.parseObject(jedisUtil.get(ProjectConfig.TOKENJWT+token),TUser.class);
 
         if (null != user) {
             if(tAdress!=null){

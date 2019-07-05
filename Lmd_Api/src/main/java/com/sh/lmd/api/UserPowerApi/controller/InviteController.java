@@ -6,6 +6,7 @@ import com.sh.common.vo.R;
 import com.sh.lmd.api.UserPowerApi.service.InviteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
@@ -21,13 +22,13 @@ public class InviteController {
     private InviteService inviteService;
 
     @GetMapping("invite/findMyInvite.do")
-    public R findMyInvite(HttpServletRequest request){
-        return inviteService.findMyInvite(request.getHeader(ProjectConfig.TOKENHEAD));
+    public R findMyInvite(@RequestParam("token") String token){
+        return inviteService.findMyInvite(token);
     }
 
     @GetMapping("invite/findInviteUser.do")
-    public R findInviteUser(HttpServletRequest request){
-        return inviteService.findInviteUser(request.getHeader(ProjectConfig.TOKENHEAD));
+    public R findInviteUser(@RequestParam("token") String token){
+        return inviteService.findInviteUser(token);
     }
 
     @GetMapping("invite/invite.do")
