@@ -11,11 +11,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
 
-/**
- *@Author feri
- *@Date Created in 2019/6/14 10:10
- * 基于JWT 进行封装处理
- */
 public class JwtUtil {
     /**
      * 基于JWT,生成令牌
@@ -34,7 +29,7 @@ public class JwtUtil {
     }
     //生成秘钥
     private static SecretKey createKey(){
-      byte[] dataKey=ProjectConfig.JWTKEY.getBytes();
+        byte[] dataKey=ProjectConfig.JWTKEY.getBytes();
         SecretKey key=new SecretKeySpec(dataKey,0,dataKey.length,"AES");
         return key;
     }
@@ -53,7 +48,7 @@ public class JwtUtil {
     public static String parseJWT(String token){
         SecretKey key=createKey();
         try{
-            Claims claims=Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+            Claims claims= Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
             return claims.getSubject();
         }catch (Exception e){
             return null;
