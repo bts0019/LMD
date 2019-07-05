@@ -1,14 +1,12 @@
 package com.sh.lmd.api.login.controller;
 
-import com.sh.common.config.ProjectConfig;
 import com.sh.common.vo.R;
 import com.sh.lmd.api.login.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *@Author feri
@@ -16,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 public class LoginController {
-    @Autowired
+    @Autowired(required = false)
     private LoginService loginService;
 
     //登录
@@ -26,12 +24,12 @@ public class LoginController {
     }
     //检查是否有效
     @GetMapping("api/login/checklogin.do")
-    public R check(HttpServletRequest request){
-        return loginService.check(request.getHeader(ProjectConfig.TOKENHEAD));
+    public R check(@RequestParam("token") String token){
+        return loginService.check(token);
     }
     //注销
     @GetMapping("/login/exit.do")
-    public R exit(HttpServletRequest request){
-        return loginService.exit(request.getHeader(ProjectConfig.TOKENHEAD));
+    public R exit(@RequestParam("token") String token){
+        return loginService.exit(token);
     }
 }
